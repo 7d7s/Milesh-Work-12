@@ -820,6 +820,25 @@ nav a:hover {
     max-width: 500px;
     font-weight: 400;
 }
+.get-in-touch {
+  transition: background-color 0.3s cubic-bezier(0.075, 0.82, 0.165, 1); 
+}
+
+.get-in-touch:hover {
+  background-color: #004d40;
+}
+.contact-btn {
+  background-color: white;
+  color: #000;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.contact-btn:hover {
+  background-color: #004d40; 
+  color: #fff;
+  text-decoration: underline;
+  border: 1px solid #fff ;
+}
 
 /* Apply dark green border on focus for inputs, textarea, and select */
 #contactForm input:focus,
@@ -845,75 +864,21 @@ nav a:hover {
 }
 
 /* ===========about-us========== */
-    .hex-container {
-      display: flex;
-      flex-direction: column;
-      gap: 60px;
-    }
-
-    .hex-row {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 30px;
-    }
-
-    .hex-left {
-      flex-direction: row-reverse;
-    }
-
-    .hex-card {
-      background: #fff;
-      padding: 25px;
-      border-radius: 12px;
-      max-width: 400px;
-      width: 100%;
-      /* box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06); */
-      transition: all 0.3s ease-in-out;
-    }
-
-    .hex-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-    }
-
-    .hex-shape {
-      width: 150px;
-      height: 150px;
-      background-color: #fff;
-      clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 36px;
-      font-weight: bold;
-      color: #fff;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease;
-      z-index: 2;
-    }
-
-    .hex-shape:hover {
-      transform: scale(1.1);
-    }
-
-    .hex-shape.vision {
-      background-color: #004d409a;
-    }
-
-    .hex-shape.mission {
-      background-color: var(--dark-green);
-    }
-
-    .hex-shape.values {
-      background-color: var(--bg-dark-teal);
-    }
-
-    .hex-card h5 {
-      font-weight: 700;
-      margin-bottom: 10px;
-    }
+  .about-img-01{
+    /* overflow: hidden; */
+    height: 500px;
+  }
+  .about-img-01 img, .about-img-02 img{
+    width: 100%;height: 100%;
+    object-fit: cover;
+  }
+  .about-img-02{
+    height: 15rem;
+    overflow: hidden;
+  }
+  .fs-7{
+    font-size: .8rem;
+  }
 .about-img{
   height: 500px;
   width: 100%;
@@ -921,6 +886,7 @@ nav a:hover {
   align-items: center;
   justify-content: center;
 text-align: center;
+z-index: 1;
 /* background-color: var(--gray-color); */
 }
 .about-img img{
@@ -928,6 +894,104 @@ text-align: center;
   width: 100%;
   object-fit: cover;
 }
+.arrow-img{
+  left: -50px;
+  position: absolute;
+  opacity: .3;
+  z-index: -1;
+}
+.max-w-7xl{
+  max-width: 1300px;
+}
+
+
+/* =====Back To HOme ============ */
+#backToTopBtn {
+      display: none;
+      position: fixed;
+      bottom: 90px;
+      right: 30px;
+      z-index: 1000;
+      color: #004d40;
+      border: none;
+      cursor: pointer;
+      font-size: 40px;
+      z-index: 999;
+      background-blend-mode:  overlay;
+    }
+
+    #backToTopBtn:hover {
+      color: var(--dark-green);
+    }
+
+
+
+/* =======ChatBox============ */
+    .chat-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 999;
+      border-radius: 50%;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      width: 60px;
+      height: 60px;
+      font-size: 28px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .chatbox {
+      position: fixed;
+      bottom: 90px;
+      right: 20px;
+      width: 300px;
+      height: 400px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      z-index: 999;
+    }
+
+    .chatbox.show-chatbox {
+      display: flex;
+    }
+
+    .chatbox-header {
+      background-color: #28a745;
+      color: white;
+      padding: 10px;
+      font-weight: bold;
+    }
+
+    .chatbox-body {
+      flex: 1;
+      padding: 10px;
+      overflow-y: auto;
+    }
+
+    .chatbox-footer {
+      padding: 10px;
+      border-top: 1px solid #ccc;
+    }
+
+    .chatbox-footer input {
+      width: 100%;
+      padding: 5px;
+    }
+
+    @media (max-width: 480px) {
+      .chatbox {
+        width: 90%;
+        right: 5%;
+      }
+    }
+
     @media (max-width: 768px) {
       .hex-row, .hex-left {
         flex-direction: column !important;
