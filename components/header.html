@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Techtro - Smart Sticky Header</title>
+    <!-- Bootstrap 5.3 CSS -->
+     <link rel="stylesheet" href="/css/style.css">
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="/assets/fonts/fontawesome/css/all.min.css">
+    <!-- <style>
+        /* Custom styles that Bootstrap doesn't cover */
+        body {
+            height: 2000px; /* For demo scrolling */
+            position: relative;
+        }
+        
+        .header {
+            transition: all 0.4s ease;
+            z-index: 100;
+        }
+        
+        .header.fixed {
+            position: fixed;
+            top: -80px;
+            transform: translateY(0);
+            width: 100%;
+        }
+        
+        .header.slide-down {
+            top: 0;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(5px);
+        }
+        
+        .header.sticky {
+            top: 0;
+            transform: none;
+        }
+        
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -320px; /* Start off-screen */
+            width: 320px;
+            height: 100vh;
+            transition: right 0.4s ease;
+            z-index: 1001; /* Above overlay */
+            overflow-y: auto;
+        }
+        
+        .mobile-menu.active {
+            right: 0;
+        }
+        
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .hero {
+            height: 120vh;
+        }
+    </style> -->
+</head>
+<body>
+    <!-- Header -->
+     <header class="header px-md-4 d-flex justify-content-center align-items-center">
+      <div class="container-fluid border-bottom border-secondary shadow-sm py-3 px-md-5 bg-teal">
+          <div class="d-flex justify-content-between align-items-center">
+             <div class="d-flex gap-5">
+              <a href="#" class="logo text-decoration-none fs-4 fw-bold text-white">Medlattice</a>
+              
+              <!-- Desktop Navigation -->
+              <nav class="menu-bar d-none d-lg-flex align-items-center gap-4">
+                  <a href="/" class="text-decoration-none">Home</a>
+                  <a href="about.html" class="text-decoration-none">About</a>
+                  <a href="faq.html" class="text-decoration-none">Faq</a>
+                  <a href="review.html" class="text-decoration-none">Review</a>
+                  <a href="contact-us.html" class="text-decoration-none">Contact</a>
+              </nav>
+             </div>
+             <a href="#" class="btn d-none d-lg-block btn-outline-secondary px-4 py-2 rounded-pill custom-hover">Get Started</a>
+
+              <!-- Mobile Toggle Button -->
+              <button class="menu-toggle d-lg-none p-0 border-0 bg-transparent" id="menuToggle">
+                  <i class="fas fa-bars fs-3"></i>
+              </button>
+          </div>
+      </div>
+  </header>
+
+   <!-- Mobile Menu -->
+  <div class="mobile-menu bg-white shadow vh-100 p-4" id="mobileMenu">
+      <div class="d-flex justify-content-between mb-4">
+          <a href="#" class="logo text-decoration-none fs-4 fw-bold text-dark">Medlattice</a>
+          <button class="btn p-0 border-0 bg-transparent close-menu">
+              <i class="fas fa-times fs-3"></i>
+          </button>
+      </div>
+      
+      <div class="d-flex flex-column h-100">
+          <nav class="mb-4">
+              <a href="/" class="d-block py-2 text-decoration-none text-dark">Home</a>
+              <a href="about.html" class="d-block py-2 text-decoration-none text-dark">About</a>
+              <a href="faq.html" class="d-block py-2 text-decoration-none text-dark">Faq</a>
+              <a href="review.html" class="d-block py-2 text-decoration-none text-dark">Testimonials</a>
+              <a href="contact-us.html" class="d-block py-2 text-decoration-none text-dark mb-5">Contact</a>
+          </nav>
+          
+          <div class="mt-auto pt-4 border-top">
+              <h5 class="mb-3">Contact Info</h5>
+              <p class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> I, 102, Block N, Kirti Nagar, New Delhi, Delhi, 110015</p>
+              <p class="mb-2"><i class="fas fa-envelope me-2"></i> info@7d7s.com</p>
+              <p class="mb-2"><i class="fas fa-clock me-2"></i> Mon-Friday, 09am –05pm</p>
+              <p class="mb-3"><i class="fas fa-phone me-2"></i> +91 8800007740</p>
+              
+              <div class="d-flex gap-3">
+                  <a href="#" class="text-dark"><i class="fab fa-facebook-f"></i></a>
+                  <a href="#" class="text-dark"><i class="fab fa-twitter"></i></a>
+                  <a href="#" class="text-dark"><i class="fab fa-instagram"></i></a>
+                  <a href="#" class="text-dark"><i class="fab fa-linkedin-in"></i></a>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <!-- Overlay -->
+  <div class="overlay" id="overlay"></div>
+  </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const header = document.querySelector('.header');
+            const menuToggle = document.getElementById('menuToggle');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const overlay = document.getElementById('overlay');
+            const closeMenuBtn = document.querySelector('.close-menu');
+            let lastScrollY = window.scrollY;
+            const threshold = 200;
+            let isFixed = false;
+            let isSticky = false;
+
+            // Function to open menu
+            function openMenu() {
+                mobileMenu.classList.add('active');
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            // Function to close menu
+            function closeMenu() {
+                mobileMenu.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+
+            // Toggle mobile menu
+            menuToggle.addEventListener('click', function() {
+                if (mobileMenu.classList.contains('active')) {
+                    closeMenu();
+                } else {
+                    openMenu();
+                }
+            });
+
+            // Close menu when clicking close button
+            closeMenuBtn.addEventListener('click', closeMenu);
+
+            // Close menu when clicking overlay
+            overlay.addEventListener('click', closeMenu);
+
+            // Header scroll effect
+            window.addEventListener('scroll', function() {
+                const currentScrollY = window.scrollY;
+                const scrollDirection = currentScrollY > lastScrollY ? 'down' : 'up';
+                
+                if (currentScrollY > threshold && !isFixed) {
+                    header.classList.add('fixed');
+                    isFixed = true;
+                }
+                else if (currentScrollY <= threshold && isFixed) {
+                    header.classList.remove('fixed', 'slide-down', 'sticky');
+                    isFixed = false;
+                    isSticky = false;
+                    return;
+                }
+                
+                if (isFixed) {
+                    if (scrollDirection === 'down' && !isSticky) {
+                        header.classList.add('slide-down');
+                    } 
+                    else if (scrollDirection === 'up' && header.classList.contains('slide-down')) {
+                        header.classList.remove('slide-down');
+                    }
+                    
+                    if (currentScrollY < lastScrollY && currentScrollY > threshold + 80) {
+                        header.classList.add('sticky');
+                        isSticky = true;
+                    }
+                }
+                
+                lastScrollY = currentScrollY;
+            });
+
+            // Close menu on window resize if mobile menu is open (for better responsiveness)
+            window.addEventListener('resize', function() {
+                if (window.innerWidth >= 992 && mobileMenu.classList.contains('active')) {
+                    closeMenu();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
