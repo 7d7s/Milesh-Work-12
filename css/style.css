@@ -1083,7 +1083,7 @@ a.contact-btn:hover {
 
 .backToTop::before {
   position: absolute;
-  bottom: -28px;
+  bottom: 15px;
   content: "Back to Top";
   color: white;
   display: flex;

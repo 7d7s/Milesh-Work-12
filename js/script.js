@@ -349,3 +349,8 @@ document.addEventListener("DOMContentLoaded", function () {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
+// ========ChatBox========
+  function toggleChat() {
+    const chatBox = document.getElementById('chatBox');
+    chatBox.classList.toggle('show-chatbox');
+  }
