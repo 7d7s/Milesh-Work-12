@@ -4,7 +4,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Montserrat", sans-serif;
+  /* font-family: "Montserrat", sans-serif; */
 }
 
 html {
@@ -1051,13 +1051,12 @@ a.contact-btn:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0px 0px 0px 4px rgba(180, 160, 255, 0.253);
   cursor: pointer;
   transition-duration: 0.3s;
   overflow: hidden;
   position: fixed;
-  right: 20px;
-  bottom: 50px;
+  right: 30px;
+  bottom: 100px;
   z-index: 999;
 }
 
@@ -1079,14 +1078,13 @@ a.contact-btn:hover {
 }
 
 .backToTop:hover .svgIcon {
-  /* width: 20px; */
   transition-duration: 0.3s;
   transform: translateY(-250%);
 }
 
 .backToTop::before {
   position: absolute;
-  bottom: -20px;
+  bottom: -28px;
   content: "Back to Top";
   color: white;
   display: flex;
