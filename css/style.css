@@ -1115,14 +1115,13 @@ a.contact-btn:hover {
 
 .backToTop::before {
   position: absolute;
-  bottom: 15px;
+  bottom: 15px !important;
   content: "Back to Top";
   color: white;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-  font-size: 0px;
 }
 
 .backToTop:hover::before {
@@ -1134,8 +1133,6 @@ a.contact-btn:hover {
 }
 
 
-
-
 /* =======ChatBox============ */
 .chat-button {
   position: fixed;
@@ -1143,7 +1140,7 @@ a.contact-btn:hover {
   right: 20px;
   z-index: 999;
   border-radius: 50%;
-  background-color: #28a745;
+  background-color: var(--dark-green);
   color: white;
   border: none;
   width: 60px;
