@@ -611,13 +611,13 @@ nav a:hover {
 
 .footer-links a,
 .footer-links li {
-  color: red;
+  color: white;
   text-decoration: none;
   transition: all 0.3s;
 }
 
 .footer-links a:hover {
-  color: var(--bg-dark-teal);
+  color: var(--dark-green);
   padding-left: 5px;
 }
 
