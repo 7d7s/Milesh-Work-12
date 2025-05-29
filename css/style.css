@@ -1361,6 +1361,10 @@ a.contact-btn:hover {
 @media (max-width: 768px) {
   .feature-card{
     padding:20px;
+  }
+  faq-header h2, .review-header h2 {
+    font-size: 2rem;
+  }
   .hero-title {
     font-size: 2rem;
   }
