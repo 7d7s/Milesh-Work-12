@@ -99,7 +99,7 @@ background: radial-gradient(circle, rgba(8, 39, 43, 1) 73%, rgba(23, 165, 122, 1
 .animated-button svg {
   position: absolute;
   width: 24px;
-  fill: var(--bg-dark-teal);
+  fill: #ffffff;
   z-index: 9;
   transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
 }
@@ -130,6 +130,7 @@ background: radial-gradient(circle, rgba(8, 39, 43, 1) 73%, rgba(23, 165, 122, 1
   z-index: 1;
   transform: translateX(-12px);
   transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+  color: #ffffff;
 }
 
 .animated-button:hover {
@@ -146,6 +147,7 @@ background: radial-gradient(circle, rgba(8, 39, 43, 1) 73%, rgba(23, 165, 122, 1
 
 .animated-button:hover .text {
   transform: translateX(12px);
+  color: var(--bg-dark-teal);
 }
 
 .animated-button:hover svg {
