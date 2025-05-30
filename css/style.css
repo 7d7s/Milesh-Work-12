@@ -135,6 +135,7 @@ background: radial-gradient(circle, rgba(8, 39, 43, 1) 73%, rgba(23, 165, 122, 1
 
 .animated-button:hover {
   color: #212121;
+  border-color: transparent;
 }
 
 .animated-button:hover .arr-1 {
