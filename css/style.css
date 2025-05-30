@@ -85,8 +85,8 @@ background: radial-gradient(circle, rgba(8, 39, 43, 1) 73%, rgba(23, 165, 122, 1
   align-items: center;
   gap: 4px;
   padding: 12px 36px;
-  border: 4px solid;
-  border-color: transparent;
+  border: 2px solid;
+  border-color: #ffffff;
   font-size: 16px;
   border-radius: 100px;
   font-weight: 600;
